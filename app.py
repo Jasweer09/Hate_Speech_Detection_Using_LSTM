@@ -59,14 +59,26 @@ def text_to_sequence(text: str):
 async def predict(input_data: InputText):
     try:
         seq = text_to_sequence(input_data.text)
-        preds = model.predict(seq)
+        preds = model.predict(seq)[0]   # shape (3,)
         confidence = float(np.max(preds))
-        label = int(np.argmax(preds, axis=1)[0])
+        label = int(np.argmax(preds))
+
+        if confidence > 0.999:
+            # accept the top class
+            final_label = label
+            final_confidence = confidence
+        else:
+            # take the top 2 classes and pick the better one
+            top2_idx = preds.argsort()[-2:]   # indices of top 2
+            top2_probs = preds[top2_idx]
+            # pick the higher of the two
+            final_label = int(top2_idx[np.argmax(top2_probs)])
+            final_confidence = float(preds[final_label])
 
         return {
             "text": input_data.text,
-            "prediction": LABEL_MAP.get(label, "Unknown"),
-            "confidence": confidence
+            "prediction": LABEL_MAP.get(final_label, "Unknown"),
+            "confidence": final_confidence
         }
     except Exception as e:
         return {"error": str(e)}
