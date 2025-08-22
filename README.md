@@ -138,8 +138,8 @@ Access the interactive Swagger UI at `http://localhost:8000/docs`.
 Licensed under the [MIT License](LICENSE).
 
 ## 📬 Contact
-- **Name**: [Your Name]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Email**: [your.email@example.com]
+- **Name**: Jasweer Tadikonda
+- **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/jasweernaidutadikonda/)
+- **Email**: jasweertadikonda@gmail.com
 
 ⭐ Feel free to fork, contribute, or reach out for collaboration opportunities!
