@@ -119,6 +119,8 @@ Access the interactive Swagger UI at `http://localhost:8000/docs`.
   ```bash
   curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json" -d '{"text": "This is a neutral statement."}'
   ```
+    - _Prediction Page_
+  ![Screenshot](Hate_example.png)
 
 ## 📈 Model Performance
 - **Accuracy**: ~92% on test set (post-SMOTE).
